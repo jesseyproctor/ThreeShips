@@ -1,16 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { IServiceProvider } from "@/public/types/serviceProvider";
+import { IExperience } from "@/public/types/experience";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import StarRating from "./StarRating";
 
 interface ProviderCardProps {
   provider: IServiceProvider;
+  experiences: IExperience[];
 }
 
-const ProviderCard: React.FC<ProviderCardProps> = ({ provider }) => {
+const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences }) => {
   const { slug } = provider;
+
+  const getRandomExperience = (): IExperience | null => {
+    if (experiences.length === 0) return null;
+    const randomIndex = Math.floor(Math.random() * experiences.length);
+    return experiences[randomIndex];
+  };
+
+  const randomExperience = getRandomExperience();
 
   return (
     <div className="relative border p-20 mb-4 rounded-md">
@@ -26,12 +36,6 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider }) => {
         <span className="ml-2">|</span>
         <span className="ml-2">{provider.address}</span>
       </div>
-      {/* <p>
-        Certs: {provider.certifications}
-      </p>
-      <p>
-        Awards:{provider.awards}
-      </p> */}
       <p className="text-gray-600 mt-10">
         <div className="font-bold mb-5">Services Offered:</div>
         {provider.services.map((service, index) => (
@@ -43,7 +47,7 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider }) => {
       </p>
       <div className="mt-10">
         <div className="text-gray-600 font-bold mt-10">Experiences:</div>
-        <div className="text-gray-600 bg-gray-200 italic p-2 mt-5 mb-10 min-h-20">{provider.highlights}</div>
+        <div className="text-gray-600 bg-gray-200 italic p-2 mt-5 mb-10 min-h-20">{randomExperience?.text|| "No experiences available"}</div>
       </div>
       <button className="absolute top-2 right-2 bg-blue-500 text-white px-10 py-4">Get Quote</button>
     </div>
