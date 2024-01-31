@@ -21,10 +21,15 @@ const FilterBy: React.FC = () => {
     fetchData();
   }, []);
 
-  // TODO: Implement logic using providers.review_score
-
   const handleStarRatingSelect = (option: string) => {
-    // Implement logic for star rating selection
+    console.log('Selected star rating:', option);
+  };
+
+  const handleServicesOfferedSelect = (option: string) => {
+    console.log('Selected star rating:', option);
+  };
+
+  const handleDistanceSelect = (option: string) => {
     console.log('Selected star rating:', option);
   };
 
@@ -60,12 +65,12 @@ const FilterBy: React.FC = () => {
             "Fertilizing",
             "Debris removal",
         ]}
-        onSelect={(option: string) => console.log('Selected services offered:', option)}
+        onSelect={handleServicesOfferedSelect}
       />
       <DropdownMenu
         label="DISTANCE"
         options={['shortest', 'longest']}
-        onSelect={(option: string) => console.log('Selected distance:', option)}
+        onSelect={handleDistanceSelect}
       />
     </div>
   );
