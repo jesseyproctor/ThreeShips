@@ -4,6 +4,7 @@ import { IServiceProvider } from "@/public/types/serviceProvider";
 import { IExperience } from "@/public/types/experience";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import StarRating from "./StarRating";
 import Popover from './Popover'; 
@@ -103,6 +104,15 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences }) =>
         </div>
       </div>
       <button className="absolute top-2 right-2 bg-blue-500 text-white px-10 py-4">Get Quote</button>
+      <button
+        className=" p-2 ml-auto font-semibold text-sm text-gray-500 flex items-center"
+        onClick={() => console.log('Show more content!')}
+      >
+        SEE MORE
+        <span className="ml-1">
+          <FontAwesomeIcon icon={faAngleDown} color="blue" />
+        </span>
+      </button>
     </div>
   );
 };
