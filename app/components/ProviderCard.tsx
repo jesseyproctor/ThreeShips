@@ -4,6 +4,7 @@ import { IServiceProvider } from "@/public/types/serviceProvider";
 import { IExperience } from "@/public/types/experience";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { IoIosInformationCircleOutline } from "react-icons/io";
 import StarRating from "./StarRating";
 
 interface ProviderCardProps {
@@ -40,9 +41,12 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences }) =>
       <h1 className="text-xl font-bold mb-2 text-black">{provider.name}</h1>
       <div className="flex items-center mb-2 text-gray-500">
         <StarRating rating={provider.review_score} />
-        <span className="ml-2 font-bold text-black">{provider.review_score} / 5</span>
-        <span className="ml-2">|</span>
-        <span className="ml-2">{provider.address}</span>
+        <span className="ml-2 font-bold text-black relative">
+          {provider.review_score} / 5
+          <IoIosInformationCircleOutline className="text-gray-500 ml-1 inline align-text-top text-xs" style={{ marginTop: '-2px' }} />
+        </span>
+        <span className="ml-2 text-gray-300">|</span>
+        <span className="ml-2 text-gray-500">{provider.address}</span>
       </div>
       <p className="text-gray-600 mt-10">
         <div className="font-bold mb-5">SERVICES OFFERED</div>
