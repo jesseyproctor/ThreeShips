@@ -13,9 +13,10 @@ import Popover from './Popover';
 interface ProviderCardProps {
   provider: IServiceProvider;
   experiences: IExperience[];
+  isFirstCard?: boolean;
 }
 
-const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences }) => {
+const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFirstCard }) => {
   const { slug } = provider;
 
   const getFormattedAuthor = (author: string) => {
@@ -44,7 +45,7 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences }) =>
   };
 
   return (
-    <div className="relative border p-20 mb-4 rounded-md">
+    <div className={`relative border p-20 mb-4 rounded-md ${isFirstCard ? 'border-blue-500' : 'border-gray-300'}`}>
       <img
         src={`https://d126ytvel6227q.cloudfront.net/logos/${slug}.jpg`}
         alt={`${provider.name} Logo`}

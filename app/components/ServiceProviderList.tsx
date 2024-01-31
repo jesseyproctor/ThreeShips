@@ -73,8 +73,13 @@ const ServiceProviderList: React.FC = () => {
         onServicesOfferedSelect={handleServicesOfferedSelect}
         onDistanceSelect={handleDistanceSelect}
       />
-      {filteredProviders.map((provider) => (
-        <ProviderCard key={provider._id} provider={provider} experiences={experiences}/>
+      {filteredProviders.map((provider, index) => (
+        <ProviderCard 
+          key={provider._id} 
+          provider={provider} 
+          experiences={experiences}
+          isFirstCard={index === 0}
+        />
       ))}
     </div>
   );
