@@ -14,6 +14,14 @@ interface ProviderCardProps {
 const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences }) => {
   const { slug } = provider;
 
+  const getFormattedAuthor = (author: string) => {
+    const names = author.split(' ');
+    const firstName = names[0];
+    const lastNameInitial = names.length > 1 ? names[1].charAt(0) + '.' : '';
+  
+    return `${firstName} ${lastNameInitial}`;
+  };  
+
   const getRandomExperience = (): IExperience | null => {
     if (experiences.length === 0) return null;
     const randomIndex = Math.floor(Math.random() * experiences.length);
@@ -47,7 +55,18 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences }) =>
       </p>
       <div className="mt-10">
         <div className="text-gray-600 font-bold mt-10">Experiences:</div>
-        <div className="text-gray-600 bg-gray-200 italic p-2 mt-5 mb-10 min-h-20">{randomExperience?.text|| "No experiences available"}</div>
+        <div className="text-gray-600 bg-gray-50 p-4 mt-5 mb-10 min-h-20">
+            {randomExperience ? (
+            <>
+                <span className="italic">{randomExperience.text}</span>
+                <div className="text-right mt-4">
+                     - {getFormattedAuthor(randomExperience.author)}
+                </div>
+            </>
+            ) : (
+            <span>No experiences available</span>
+            )}
+        </div>
       </div>
       <button className="absolute top-2 right-2 bg-blue-500 text-white px-10 py-4">Get Quote</button>
     </div>
