@@ -5,7 +5,17 @@ import { IServiceProvider } from '@/public/types/serviceProvider';
 import { fetchProviders } from "../api";
 import DropdownMenu from './DropdownMenu';
 
-const FilterBy: React.FC = () => {
+interface FilterByProps {
+  onStarRatingSelect: (option: string) => void;
+  onServicesOfferedSelect: (option: string) => void;
+  onDistanceSelect: (option: string) => void;
+}
+
+const FilterBy: React.FC<FilterByProps> = ({
+  onStarRatingSelect,
+  onServicesOfferedSelect,
+  onDistanceSelect,
+}) => {
   const [providers, setProviders] = useState<IServiceProvider[]>([]);
 
   useEffect(() => {
@@ -21,24 +31,12 @@ const FilterBy: React.FC = () => {
     fetchData();
   }, []);
 
-  const handleStarRatingSelect = (option: string) => {
-    console.log('Selected star rating:', option);
-  };
-
-  const handleServicesOfferedSelect = (option: string) => {
-    console.log('Selected star rating:', option);
-  };
-
-  const handleDistanceSelect = (option: string) => {
-    console.log('Selected star rating:', option);
-  };
-
   return (
     <div className="fixed top-0 right-0 left-0 bg-white p-4 flex items-center justify-end z-10">
       <DropdownMenu
         label="STAR RATING"
         options={['highest', 'lowest']}
-        onSelect={handleStarRatingSelect}
+        onSelect={onStarRatingSelect}
       />
       <DropdownMenu
         label="SERVICES OFFERED"
@@ -65,18 +63,16 @@ const FilterBy: React.FC = () => {
             "Fertilizing",
             "Debris removal",
         ]}
-        onSelect={handleServicesOfferedSelect}
+        onSelect={onServicesOfferedSelect}
       />
       <DropdownMenu
         label="DISTANCE"
         options={['shortest', 'longest']}
-        onSelect={handleDistanceSelect}
+        onSelect={onDistanceSelect}
       />
     </div>
   );
 };
 
 export default FilterBy;
-
-
 
