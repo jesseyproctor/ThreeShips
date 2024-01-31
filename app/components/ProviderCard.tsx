@@ -13,13 +13,13 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider }) => {
   const { slug } = provider;
 
   return (
-    <div className="border p-20 mb-4 rounded-md">
+    <div className="relative border p-20 mb-4 rounded-md">
       <img
         src={`https://d126ytvel6227q.cloudfront.net/logos/${slug}.jpg`}
         alt={`${provider.name} Logo`}
         className="max-w-full mb-2 rounded-md"
       />
-      <h2 className="text-xl font-bold mb-2 text-black">{provider.name}</h2>
+      <h1 className="text-xl font-bold mb-2 text-black">{provider.name}</h1>
       <div className="flex items-center mb-2 text-gray-500">
         <StarRating rating={provider.review_score} />
         <span className="ml-2 font-bold text-black">{provider.review_score} / 5</span>
@@ -45,6 +45,7 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider }) => {
         <div className="text-gray-600 font-bold mt-10">Experiences:</div>
         <div className="text-gray-600 bg-gray-200 italic p-2 mt-5 mb-10 min-h-20">{provider.highlights}</div>
       </div>
+      <button className="absolute top-2 right-2 bg-blue-500 text-white px-10 py-4">Get Quote</button>
     </div>
   );
 };
