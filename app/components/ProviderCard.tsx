@@ -10,44 +10,45 @@ interface ProviderCardProps {
 }
 
 const ProviderCard: React.FC<ProviderCardProps> = ({ provider }) => {
-    const { slug } = provider
+  const { slug } = provider;
 
   return (
-    <div className="border p-4 mb-4 rounded-md">
-     <h2 className="text-xl font-bold mb-2">{provider.name}</h2>
+    <div className="border p-20 mb-4 rounded-md">
       <img
         src={`https://d126ytvel6227q.cloudfront.net/logos/${slug}.jpg`}
         alt={`${provider.name} Logo`}
         className="max-w-full mb-2 rounded-md"
       />
-      <p>
+      <h2 className="text-xl font-bold mb-2 text-black">{provider.name}</h2>
+      <div className="flex items-center mb-2 text-gray-500">
         <StarRating rating={provider.review_score} />
-        {provider.review_score} / 5
-      </p>
-      <p>
-       {provider.address}
-      </p>
+        <span className="ml-2 font-bold text-black">{provider.review_score} / 5</span>
+        <span className="ml-2">|</span>
+        <span className="ml-2">{provider.address}</span>
+      </div>
       {/* <p>
         Certs: {provider.certifications}
       </p>
       <p>
         Awards:{provider.awards}
       </p> */}
-      <p>
-        Services Offered:
+      <p className="text-gray-600 mt-10">
+        <div className="font-bold mb-5">Services Offered:</div>
         {provider.services.map((service, index) => (
-          <span key={index} className="ml-5">
-            <FontAwesomeIcon icon={faCheck} color="green" className="mr-2"  />
+          <span key={index} className={`ml-${index === 0 ? '0' : '5'}`}>
+            <FontAwesomeIcon icon={faCheck} color="green" className="mr-2" />
             {service}
           </span>
         ))}
       </p>
-
-      <p>
-        Experiences: {provider.highlights}
-      </p>
+      <div className="mt-10">
+        <div className="text-gray-600 font-bold mt-10">Experiences:</div>
+        <div className="text-gray-600 bg-gray-200 italic p-2 mt-5 mb-10 min-h-20">{provider.highlights}</div>
+      </div>
     </div>
   );
 };
 
 export default ProviderCard;
+
+
