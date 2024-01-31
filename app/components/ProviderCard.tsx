@@ -45,7 +45,7 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences }) =>
         <span className="ml-2">{provider.address}</span>
       </div>
       <p className="text-gray-600 mt-10">
-        <div className="font-bold mb-5">Services Offered:</div>
+        <div className="font-bold mb-5">SERVICES OFFERED</div>
         {provider.services.map((service, index) => (
           <span key={index} className={`ml-${index === 0 ? '0' : '5'}`}>
             <FontAwesomeIcon icon={faCheck} color="green" className="mr-2" />
@@ -54,11 +54,11 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences }) =>
         ))}
       </p>
       <div className="mt-10">
-        <div className="text-gray-600 font-bold mt-10">Experiences:</div>
+        <div className="text-gray-600 font-bold mt-10">EXPERIENCES</div>
         <div className="text-gray-600 bg-gray-50 p-4 mt-5 mb-10 min-h-20">
             {randomExperience ? (
             <>
-                <span className="italic">{randomExperience.text}</span>
+                <span className="italic">&ldquo;{randomExperience.text}&rdquo;</span>
                 <div className="text-right mt-4">
                      - {getFormattedAuthor(randomExperience.author)}
                 </div>
