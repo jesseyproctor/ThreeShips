@@ -1,12 +1,15 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { IServiceProvider } from "@/public/types/serviceProvider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import StarRating from "./StarRating";
 
 interface ProviderCardProps {
   provider: IServiceProvider;
 }
 
 const ProviderCard: React.FC<ProviderCardProps> = ({ provider }) => {
-    const { th, toh } = provider.rating;
     const { slug } = provider
 
   return (
@@ -18,7 +21,8 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider }) => {
         className="max-w-full mb-2 rounded-md"
       />
       <p>
-        Rating: {th.toFixed(1)} / 5
+        <StarRating rating={provider.review_score} />
+        {provider.review_score} / 5
       </p>
       <p>
        {provider.address}
@@ -30,8 +34,15 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider }) => {
         Awards:{provider.awards}
       </p> */}
       <p>
-         Services: {provider.services}
+        Services Offered:
+        {provider.services.map((service, index) => (
+          <span key={index} className="ml-5">
+            <FontAwesomeIcon icon={faCheck} color="green" className="mr-2"  />
+            {service}
+          </span>
+        ))}
       </p>
+
       <p>
         Experiences: {provider.highlights}
       </p>
