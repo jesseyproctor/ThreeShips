@@ -6,20 +6,34 @@ interface ProviderCardProps {
 }
 
 const ProviderCard: React.FC<ProviderCardProps> = ({ provider }) => {
+    const { th, toh } = provider.rating;
+    const { slug } = provider
+
   return (
-    <div className="border p-4 mb-4 rounded-md shadow-md">
-      <h2 className="text-xl font-bold mb-2">{provider.name}</h2>
+    <div className="border p-4 mb-4 rounded-md">
+     <h2 className="text-xl font-bold mb-2">{provider.name}</h2>
+      <img
+        src={`https://d126ytvel6227q.cloudfront.net/logos/${slug}.jpg`}
+        alt={`${provider.name} Logo`}
+        className="max-w-full mb-2 rounded-md"
+      />
       <p>
-        <strong>ID:</strong> {provider._id}
+        Rating: {th.toFixed(1)} / 5
       </p>
       <p>
-        <strong>Phone:</strong> {provider.phone}
+       {provider.address}
+      </p>
+      {/* <p>
+        Certs: {provider.certifications}
       </p>
       <p>
-        <strong>Website:</strong>{" "}
-        <a href={provider.website} target="_blank" rel="noopener noreferrer">
-          {provider.website}
-        </a>
+        Awards:{provider.awards}
+      </p> */}
+      <p>
+         Services: {provider.services}
+      </p>
+      <p>
+        Experiences: {provider.highlights}
       </p>
     </div>
   );
