@@ -3,9 +3,10 @@ import React, { useState } from "react";
 import { IServiceProvider } from "@/public/types/serviceProvider";
 import { IExperience } from "@/public/types/experience";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { IoIosInformationCircleOutline } from "react-icons/io";
+import { GiFlamer } from "react-icons/gi";
+import { FaLocationDot } from "react-icons/fa6";
 import StarRating from "./StarRating";
 import Popover from './Popover'; 
 
@@ -68,16 +69,25 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences }) =>
             </span>
           }
         >
-          {/* Popover content */}
-          <div>
-            <p>Lori Ipsum text...</p>
-            <p>Another sentence...</p>
-            <p>And one more...</p>
-          </div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+          </p>
         </Popover>
 
         <span className="ml-2 text-gray-300">|</span>
         <span className="ml-2 text-gray-500">{provider.address}</span>
+      </div>
+      <div>
+        {provider.distance && provider.distance < 5 && (
+          <span>
+            <FaLocationDot className="text-green-700 inline" /> Nearby
+          </span>
+        )}
+        {provider.review_count && provider.review_count >= 100 && (
+          <span>
+            <GiFlamer className="text-green-700 inline" /> Popular
+          </span>
+        )}
       </div>
       <p className="text-gray-600 mt-10">
         <div className="font-bold mb-5">SERVICES OFFERED</div>
@@ -118,6 +128,3 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences }) =>
 };
 
 export default ProviderCard;
-
-
-
