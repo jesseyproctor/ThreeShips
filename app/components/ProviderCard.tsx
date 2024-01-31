@@ -1,5 +1,5 @@
 import React from "react";
-import { IServiceProvider } from "@/types/serviceProvider";
+import { IServiceProvider } from "@/public/types/serviceProvider";
 
 interface ProviderCardProps {
   provider: IServiceProvider;

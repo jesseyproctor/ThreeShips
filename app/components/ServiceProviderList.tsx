@@ -1,12 +1,24 @@
-import { IServiceProvider } from "@/types/serviceProvider";
+'use client'
+import { IServiceProvider } from "@/public/types/serviceProvider";
 import React from "react";
 import ProviderCard from "./ProviderCard";
 
-interface ServiceProviderProps {
-  providers: IServiceProvider[];
-}
+const ServiceProviderList: React.FC = () => {
+  const [providers, setProviders] = React.useState<IServiceProvider[]>([])
+ 
+  const fetchProviders = async () => {
+    try {
+      const response = await fetch('/mocks/providers.json');
+      const data = await response.json();
+      setProviders(data);
+    } catch (error) {
+      console.error('Error fetching providers:', error);
+    }
+  };
 
-const TodoList: React.FC<ServiceProviderProps> = ({ providers }) => {
+  React.useEffect(() => {
+    fetchProviders();
+  }, [])
   return (
     <div className='overflow-x-auto'>
         <div>
@@ -18,4 +30,4 @@ const TodoList: React.FC<ServiceProviderProps> = ({ providers }) => {
   );
 };
 
-export default TodoList;
+export default ServiceProviderList;
