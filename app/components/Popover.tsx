@@ -1,9 +1,9 @@
 import React, { ReactNode, useState } from "react";
 
 interface PopoverProps {
-    anchor: ReactNode;
-    children: ReactNode;
-  }
+  anchor: ReactNode;
+  children: ReactNode;
+}
 
 const Popover: React.FC<PopoverProps> = ({ anchor, children }) => {
   const [isPopoverVisible, setPopoverVisible] = useState(false);
@@ -21,19 +21,20 @@ const Popover: React.FC<PopoverProps> = ({ anchor, children }) => {
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="cursor-pointer"
+        className="cursor-pointer relative"
       >
         {anchor}
-      </div>
-      {isPopoverVisible && (
-        <div className=" absolute ">
-          <div className="danger-arrow-left bg-white p-5 m-5 border-green-500 border border-solid rounded text-center align-content-center shadow-xl">
-            {children}
+        {isPopoverVisible && (
+          <div className="absolute left-[84%] top-[-125%] md:top-[-135%]">
+            <div className="danger-arrow-left bg-white p-5 m-5 border-green-500 border border-solid rounded text-center align-content-center shadow-xl">
+              {children}
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
 
 export default Popover;
+
