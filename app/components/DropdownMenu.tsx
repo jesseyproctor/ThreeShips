@@ -44,7 +44,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ label, options, onSelect, w
       </button>
       {isOpen && (
         <div 
-          className={`absolute z-10 right-4 mt-10 p-2 bg-white border border-gray-300 rounded`}
+          className={`absolute z-10 right-4 mt-10 p-2 bg-white border border-gray-300 rounded overflow-y-auto max-h-48`}
           style={{ width: width ? `${width}px` : 'auto' }}
         >
           {options.map((option, index) => (
