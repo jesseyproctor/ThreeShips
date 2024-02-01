@@ -125,7 +125,7 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
             )}
           </div>
         </div>
-        <button className="absolute mt-4 md:mt-8 top-10 md:top-20 right-4 md:right-20 bg-blue-700 text-white font-bold px-10 md:px-20 py-3 md:py-4">
+        <button className="absolute mt-4 md:mt-8 top-20 md:top-20 right-4 md:right-20 bg-blue-700 text-white font-bold px-2 md:px-20 py-3 md:text-xl md:py-4">
           Get Quote
         </button>
         <button
