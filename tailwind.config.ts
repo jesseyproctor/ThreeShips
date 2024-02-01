@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     tooltipArrows: (theme: (arg0: string) => any) => ({
       'danger-arrow': {
-          borderColor: theme('colors.green.400'),
+          borderColor: theme('colors.green.500'),
           borderWidth: 1,
           backgroundColor: theme('colors.white'),
           size: 10,

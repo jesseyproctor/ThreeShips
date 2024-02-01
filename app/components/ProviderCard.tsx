@@ -85,10 +85,12 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
               </span>
             }
           >
-            <p className="text-xs md:text-sm">
+            <p className="text-xs md:text-sm p-2 pb-5 max-h-40" style={{ overflow: 'hidden', lineHeight: '2' }}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat.
+              dolore magna aliqua. 
+            </p>
+            <p className="font-bold mb-2 md:mb-5 text-gray-600">
+              BETTER THAN <span className="text-green-700">90%</span> OF COMPANIES 
             </p>
           </Popover>
           <span className="mt-2 md:ml-2 text-gray-300">|</span>

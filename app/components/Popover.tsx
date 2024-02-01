@@ -26,8 +26,10 @@ const Popover: React.FC<PopoverProps> = ({ anchor, children }) => {
         {anchor}
       </div>
       {isPopoverVisible && (
-        <div className="danger-arrow-left bg-white p-5 m-5 border-green-400 border border-solid rounded text-center align-content-center">
-         {children}
+        <div className=" absolute ">
+          <div className="danger-arrow-left bg-white p-5 m-5 border-green-500 border border-solid rounded text-center align-content-center shadow-xl">
+            {children}
+          </div>
         </div>
       )}
     </div>
