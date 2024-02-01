@@ -54,14 +54,19 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
           <h2 className="text-white font-bold text-lg">FEATURED PARTNER</h2>
         </div>
       )}
-      <div className={`border p-4 md:p-8 mb-4 rounded-md ${isFirstCard ? "border-blue-500 border-4" : "border-gray-300"}`}>
-        <div className="max-w-60">
-          <img
-            src={`https://d126ytvel6227q.cloudfront.net/logos/${slug}.jpg`}
-            alt={`${provider.name} Logo`}
-            className="max-w-full mb-2 rounded-md"
-          />
-        </div>  
+      <div className={`border md:p-20 p-4 mb-4 rounded-md ${isFirstCard ? "border-blue-500 border-4" : "border-gray-300"}`}>
+        <div className="flex">
+          <div className="max-w-60 mr-4">
+            <img
+              src={`https://d126ytvel6227q.cloudfront.net/logos/${slug}.jpg`}
+              alt={`${provider.name} Logo`}
+              className="max-w-full mb-2 rounded-md"
+            />
+          </div>
+          <button className=" bg-blue-700 text-white font-bold max-h-12 md:px-20 px-8 md:text-xl ml-auto">
+            Get Quote
+          </button>
+        </div>
         <h1 className="text-2xl md:text-3xl font-bold mb-2 text-black">{provider.name}</h1>
         <div className="flex flex-col md:flex-row md:items-center mb-2 mt-4 text-gray-500">
           <StarRating rating={provider.review_score} />
@@ -127,9 +132,6 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
             )}
           </div>
         </div>
-        <button className="absolute mt-4 md:mt-8 top-20 md:top-20 right-4 md:right-20 bg-blue-700 text-white font-bold px-2 md:px-20 py-3 md:text-xl md:py-4">
-          Get Quote
-        </button>
         <button
           className="mt-4 md:mt-8 p-2 md:p-4 ml-auto font-semibold text-xs md:text-sm text-gray-500 flex items-center"
           onClick={() => console.log("Show more content!")}
