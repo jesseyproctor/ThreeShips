@@ -7,6 +7,15 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    tooltipArrows: (theme: (arg0: string) => any) => ({
+      'danger-arrow': {
+          borderColor: theme('colors.green.400'),
+          borderWidth: 1,
+          backgroundColor: theme('colors.white'),
+          size: 10,
+          offset: 10
+      },
+  }),
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -15,6 +24,8 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-tooltip-arrow-after')()
+  ],
 };
 export default config;
