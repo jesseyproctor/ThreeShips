@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IServiceProvider } from "@/public/types/serviceProvider";
 import { IExperience } from "@/public/types/experience";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,6 +9,7 @@ import { GiFlamer } from "react-icons/gi";
 import { FaLocationDot } from "react-icons/fa6";
 import StarRating from "./StarRating";
 import Popover from "./Popover";
+import ProviderScore from "@/utils/providerScore";
 
 interface ProviderCardProps {
   provider: IServiceProvider;
@@ -20,6 +21,19 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
   const { slug } = provider;
   const [isPopoverVisible, setPopoverVisible] = useState(false);
   const [randomExperience, setRandomExperience] = useState<IExperience | null>(null);
+
+  const providerScoreArray = ProviderScore();
+  const getProviderScore = () => {
+    const matchingProvider = providerScoreArray.find(prov => prov.providerId === provider._id);
+  
+    if (matchingProvider) {
+      return matchingProvider.percentage;
+    }
+  
+    return null; 
+  };
+
+  const percentage = getProviderScore()
 
   const getFormattedAuthor = (author: string) => {
     const names = author.split(" ");
@@ -46,6 +60,7 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
   const handleMouseLeave = () => {
     setPopoverVisible(false);
   };
+
 
   return (
     <div className="relative">
@@ -90,7 +105,7 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
               dolore magna aliqua. 
             </p>
             <p className="font-bold mb-2 md:mb-5 text-gray-600">
-              BETTER THAN <span className="text-green-700">90%</span> OF COMPANIES 
+              BETTER THAN <span className="text-green-700">{percentage?.toFixed(0)}%</span> OF COMPANIES 
             </p>
           </Popover>
           <span className="mt-2 md:ml-2 text-gray-300">|</span>
