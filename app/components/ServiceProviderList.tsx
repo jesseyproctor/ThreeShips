@@ -6,12 +6,14 @@ import React, { useState } from "react";
 import ProviderCard from "./ProviderCard";
 import { fetchProviders, fetchExperiences } from "../api";
 import FilterBy from "./FilterBy"; 
+import Load from './Load';
 
 const ServiceProviderList: React.FC = () => {
   const [providers, setProviders] = useState<IServiceProvider[]>([]);
   const [experiences, setExperiences] = useState<IExperience[]>([]);
   const [sortBy, setSortBy] = useState<string | null>(null);
   const [filterBy, setFilterBy] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -20,8 +22,10 @@ const ServiceProviderList: React.FC = () => {
         const experiencesData = await fetchExperiences();
         setProviders(providersData);
         setExperiences(experiencesData);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
+        setLoading(false);
       }
     };
 
@@ -66,23 +70,27 @@ const ServiceProviderList: React.FC = () => {
     });
 
 
-  return (
-    <div>
-      <FilterBy
-        onStarRatingSelect={handleStarRatingSelect}
-        onServicesOfferedSelect={handleServicesOfferedSelect}
-        onDistanceSelect={handleDistanceSelect}
-      />
-      {filteredProviders.map((provider, index) => (
-        <ProviderCard 
-          key={provider._id} 
-          provider={provider} 
-          experiences={experiences}
-          isFirstCard={index === 0}
+    return (
+      <div>
+        <FilterBy
+          onStarRatingSelect={handleStarRatingSelect}
+          onServicesOfferedSelect={handleServicesOfferedSelect}
+          onDistanceSelect={handleDistanceSelect}
         />
-      ))}
-    </div>
-  );
-};
-
-export default ServiceProviderList;
+        {loading ? (
+          <Load /> 
+        ) : (
+          filteredProviders.map((provider, index) => (
+            <ProviderCard
+              key={provider._id}
+              provider={provider}
+              experiences={experiences}
+              isFirstCard={index === 0}
+            />
+          ))
+        )}
+      </div>
+    );
+  };
+  
+  export default ServiceProviderList;
