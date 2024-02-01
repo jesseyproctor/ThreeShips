@@ -61,8 +61,8 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
           alt={`${provider.name} Logo`}
           className="max-w-full mb-2 rounded-md"
         />
-        <h1 className="text-xl font-bold mb-2 text-black">{provider.name}</h1>
-        <div className="flex items-center mb-2 text-gray-500">
+        <h1 className="text-2xl font-bold mb-2 text-black">{provider.name}</h1>
+        <div className="flex items-center mb-2 mt-4 text-gray-500">
           <StarRating rating={provider.review_score} />
 
           <Popover
@@ -88,7 +88,7 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
           <span className="ml-2 text-gray-300">|</span>
           <span className="ml-2 text-gray-500">{provider.address}</span>
         </div>
-        <div>
+        <div className='my-5'>
           {provider.distance && provider.distance < 5 && (
             <span>
               <FaLocationDot className="text-green-700 inline" /> Nearby
@@ -100,14 +100,16 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
             </span>
           )}
         </div>
-        <p className="text-gray-600 mt-10">
+        <p className="text-gray-600 mt-12">
           <div className="font-bold mb-5">SERVICES OFFERED</div>
-          {provider.services.map((service, index) => (
-            <span key={index} className={`ml-${index === 0 ? '0' : '5'}`}>
-              <FontAwesomeIcon icon={faCheck} color="green" className="mr-2" />
-              {service}
-            </span>
-          ))}
+          <div className="flex flex-wrap">
+            {provider.services.map((service, index) => (
+              <div key={index} className={`flex items-center my-2 mr-6 ml-${index === 0 ? '0' : '5'}`}>
+                <FontAwesomeIcon icon={faCheck} color="green" className="mr-2" />
+                {service}
+              </div>
+            ))}
+          </div>
         </p>
         <div className="mt-10">
           <div className="text-gray-600 font-bold mt-10">EXPERIENCES</div>
