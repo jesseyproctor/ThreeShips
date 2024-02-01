@@ -21,6 +21,7 @@ const FilterBy: React.FC<FilterByProps> = ({
         label="STAR RATING"
         options={['highest', 'lowest']}
         onSelect={onStarRatingSelect}
+        width={140}
       />
       <DropdownMenu
         label="SERVICES OFFERED"
@@ -48,11 +49,13 @@ const FilterBy: React.FC<FilterByProps> = ({
             "Debris removal",
         ]}
         onSelect={onServicesOfferedSelect}
+        width={185}
       />
       <DropdownMenu
         label="DISTANCE"
         options={['shortest', 'longest']} 
         onSelect={onDistanceSelect}
+        width={120}
       />
     </div>
   );

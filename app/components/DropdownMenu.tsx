@@ -6,9 +6,10 @@ interface DropdownMenuProps {
   label: string;
   options: string[];
   onSelect: (option: string) => void;
+  width?: number;
 }
 
-const DropdownMenu: React.FC<DropdownMenuProps> = ({ label, options, onSelect }) => {
+const DropdownMenu: React.FC<DropdownMenuProps> = ({ label, options, onSelect, width }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
@@ -42,7 +43,10 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ label, options, onSelect })
         </span>
       </button>
       {isOpen && (
-        <div className="absolute z-10 right-0 mt-10 p-2 bg-white border border-gray-300 rounded">
+        <div 
+          className={`absolute z-10 right-4 mt-10 p-2 bg-white border border-gray-300 rounded`}
+          style={{ width: width ? `${width}px` : 'auto' }}
+        >
           {options.map((option, index) => (
             <div
               key={option}
