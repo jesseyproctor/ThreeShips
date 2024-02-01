@@ -55,11 +55,13 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
         </div>
       )}
       <div className={`border p-4 md:p-8 mb-4 rounded-md ${isFirstCard ? "border-blue-500 border-4" : "border-gray-300"}`}>
-        <img
-          src={`https://d126ytvel6227q.cloudfront.net/logos/${slug}.jpg`}
-          alt={`${provider.name} Logo`}
-          className="max-w-full mb-2 rounded-md"
-        />
+        <div className="max-w-60">
+          <img
+            src={`https://d126ytvel6227q.cloudfront.net/logos/${slug}.jpg`}
+            alt={`${provider.name} Logo`}
+            className="max-w-full mb-2 rounded-md"
+          />
+        </div>  
         <h1 className="text-2xl md:text-3xl font-bold mb-2 text-black">{provider.name}</h1>
         <div className="flex flex-col md:flex-row md:items-center mb-2 mt-4 text-gray-500">
           <StarRating rating={provider.review_score} />
