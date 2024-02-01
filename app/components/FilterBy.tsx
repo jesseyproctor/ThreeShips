@@ -16,7 +16,7 @@ const FilterBy: React.FC<FilterByProps> = ({
 }) => {
 
   return (
-    <div className="fixed top-0 right-0 left-0 bg-white p-4 flex items-center justify-end z-10"> 
+    <div className="fixed top-0 right-20 left-0 bg-white p-4 flex items-center justify-end z-10"> 
       <DropdownMenu
         label="STAR RATING"
         options={['highest', 'lowest']}

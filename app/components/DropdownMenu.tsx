@@ -33,7 +33,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ label, options, onSelect })
   return (
     <div ref={dropdownRef} className="relative inline-flex">
       <button
-        className="border border-gray-300 rounded p-2 mr-4 font-semibold text-sm text-gray-500 flex items-center"
+        className="border border-gray-300 rounded px-4 py-2 mr-4 font-semibold text-sm text-gray-500 flex items-center"
         onClick={() => setIsOpen(!isOpen)}
       >
         {label}
@@ -42,11 +42,13 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ label, options, onSelect })
         </span>
       </button>
       {isOpen && (
-        <div className="absolute z-10 right-0 mt-2 p-2 bg-white border border-gray-300 rounded">
-          {options.map((option) => (
+        <div className="absolute z-10 right-0 mt-10 p-2 bg-white border border-gray-300 rounded">
+          {options.map((option, index) => (
             <div
               key={option}
-              className="cursor-pointer p-2 hover:bg-gray-200"
+              className={`cursor-pointer p-2 hover:bg-gray-200 ${
+                index !== options.length - 1 ? 'border-b border-gray-300' : '' 
+              }`}
               onClick={() => handleOptionClick(option)}
             >
               {option}
@@ -59,4 +61,3 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ label, options, onSelect })
 };
 
 export default DropdownMenu;
-
