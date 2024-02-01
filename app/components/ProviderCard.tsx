@@ -8,8 +8,7 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 import { GiFlamer } from "react-icons/gi";
 import { FaLocationDot } from "react-icons/fa6";
 import StarRating from "./StarRating";
-import Popover from './Popover'; 
-import { relative } from "path";
+import Popover from "./Popover";
 
 interface ProviderCardProps {
   provider: IServiceProvider;
@@ -23,12 +22,12 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
   const [randomExperience, setRandomExperience] = useState<IExperience | null>(null);
 
   const getFormattedAuthor = (author: string) => {
-    const names = author.split(' ');
+    const names = author.split(" ");
     const firstName = names[0];
-    const lastNameInitial = names.length > 1 ? names[1].charAt(0) + '.' : '';
-  
+    const lastNameInitial = names.length > 1 ? names[1].charAt(0) + "." : "";
+
     return `${firstName} ${lastNameInitial}`;
-  };  
+  };
 
   React.useEffect(() => {
     const getRandomExperience = (): IExperience | null => {
@@ -38,7 +37,7 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
     };
 
     setRandomExperience(getRandomExperience());
-  }, []); 
+  }, []);
 
   const handleMouseEnter = () => {
     setPopoverVisible(true);
@@ -55,40 +54,40 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
           <h2 className="text-white font-bold text-lg">FEATURED PARTNER</h2>
         </div>
       )}
-      <div className={`border p-20 mb-4 rounded-md ${isFirstCard ? 'border-blue-500 border-4' : 'border-gray-300'}`}>
+      <div className={`border p-4 md:p-8 mb-4 rounded-md ${isFirstCard ? "border-blue-500 border-4" : "border-gray-300"}`}>
         <img
           src={`https://d126ytvel6227q.cloudfront.net/logos/${slug}.jpg`}
           alt={`${provider.name} Logo`}
           className="max-w-full mb-2 rounded-md"
         />
-        <h1 className="text-2xl font-bold mb-2 text-black">{provider.name}</h1>
-        <div className="flex items-center mb-2 mt-4 text-gray-500">
+        <h1 className="text-2xl md:text-3xl font-bold mb-2 text-black">{provider.name}</h1>
+        <div className="flex flex-col md:flex-row md:items-center mb-2 mt-4 text-gray-500">
           <StarRating rating={provider.review_score} />
-
           <Popover
             anchor={
               <span
-                className="ml-2 font-bold text-black relative text-sm"
+                className="mt-2 md:ml-2 font-bold text-black relative text-xs md:text-sm"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
                 {provider.review_score} / 5
                 <IoIosInformationCircleOutline
                   className="text-gray-500 ml-1 inline align-text-top text-xs"
-                  style={{ marginTop: '-2px' }}
+                  style={{ marginTop: "-2px" }}
                 />
               </span>
             }
           >
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            <p className="text-xs md:text-sm">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
             </p>
           </Popover>
-
-          <span className="ml-2 text-gray-300">|</span>
-          <span className="ml-2 text-gray-500">{provider.address}</span>
+          <span className="mt-2 md:ml-2 text-gray-300">|</span>
+          <span className="mt-2 md:ml-2 text-gray-500">{provider.address}</span>
         </div>
-        <div className='my-5'>
+        <div className="my-5">
           {provider.distance && provider.distance < 5 && (
             <span>
               <FaLocationDot className="text-green-700 inline" /> Nearby
@@ -100,24 +99,24 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
             </span>
           )}
         </div>
-        <p className="text-gray-600 mt-12">
-          <div className="font-bold mb-5">SERVICES OFFERED</div>
+        <p className="text-gray-600 mt-6 md:mt-12">
+          <div className="font-bold mb-2 md:mb-5">SERVICES OFFERED</div>
           <div className="flex flex-wrap">
             {provider.services.map((service, index) => (
-              <div key={index} className={`flex items-center my-2 mr-6 ml-${index === 0 ? '0' : '5'}`}>
+              <div key={index} className={`flex items-center my-2 mr-6 md:mr-8 ml-${index === 0 ? "0" : "4"}`}>
                 <FontAwesomeIcon icon={faCheck} color="green" className="mr-2" />
                 {service}
               </div>
             ))}
           </div>
         </p>
-        <div className="mt-10">
-          <div className="text-gray-600 font-bold mt-10">EXPERIENCES</div>
-          <div className="text-gray-600 bg-gray-50 p-4 mt-5 mb-10 min-h-20">
+        <div className="mt-6 md:mt-10">
+          <div className="text-gray-600 font-bold mt-6 md:mt-10">EXPERIENCES</div>
+          <div className="text-gray-600 bg-gray-50 p-4 mt-4 md:mt-5 mb-8 md:mb-10 min-h-20">
             {randomExperience ? (
               <>
-                <span className="italic">&ldquo;{randomExperience.text}&rdquo;</span>
-                <div className="text-right mt-4">
+                <span className="italic text-xs md:text-sm">&ldquo;{randomExperience.text}&rdquo;</span>
+                <div className="text-right mt-2 md:mt-4">
                   - {getFormattedAuthor(randomExperience.author)}
                 </div>
               </>
@@ -126,10 +125,12 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
             )}
           </div>
         </div>
-        <button className="absolute mt-8 top-20 right-20 bg-blue-700 text-white font-bold px-20 py-4">Get Quote</button>
+        <button className="absolute mt-4 md:mt-8 top-10 md:top-20 right-4 md:right-20 bg-blue-700 text-white font-bold px-10 md:px-20 py-3 md:py-4">
+          Get Quote
+        </button>
         <button
-          className=" p-2 ml-auto font-semibold text-sm text-gray-500 flex items-center"
-          onClick={() => console.log('Show more content!')}
+          className="mt-4 md:mt-8 p-2 md:p-4 ml-auto font-semibold text-xs md:text-sm text-gray-500 flex items-center"
+          onClick={() => console.log("Show more content!")}
         >
           SEE MORE
           <span className="ml-1">
@@ -142,4 +143,5 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
 };
 
 export default ProviderCard;
+
 
