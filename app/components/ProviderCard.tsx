@@ -122,7 +122,7 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
           <div className="text-gray-600 bg-gray-50 p-4 mt-4 md:mt-5 mb-8 md:mb-10 min-h-20">
             {randomExperience ? (
               <>
-                <span className="italic text-xs md:text-sm">&ldquo;{randomExperience.text}&rdquo;</span>
+                <span className="italic text-xs md:text-base">&ldquo;{randomExperience.text}&rdquo;</span>
                 <div className="text-right mt-2 md:mt-4">
                   - {getFormattedAuthor(randomExperience.author)}
                 </div>
@@ -133,7 +133,7 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ provider, experiences, isFi
           </div>
         </div>
         <button
-          className="mt-4 md:mt-8 p-2 md:p-4 ml-auto font-semibold text-xs md:text-sm text-gray-500 flex items-center"
+          className="mt-4 md:mt-8 p-2 md:p-4 ml-auto font-semibold text-xs md:text-base text-gray-500 flex items-center"
           onClick={() => console.log("Show more content!")}
         >
           SEE MORE
